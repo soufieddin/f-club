@@ -4,10 +4,10 @@
     "slug": "f-club",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/f-icon.png",
+    "icon": "./app/assets/f-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/f-splash.png",
+      "image": "./app/assets/f-splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#004481"
     },
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#004481"
       }
     },
     "web": {
-      "favicon": "./assets/f-favicon.png"
+      "favicon": "./app/assets/f-favicon.png"
     }
   }
 }
