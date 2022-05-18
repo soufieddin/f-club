@@ -1,6 +1,7 @@
 import React, {useRef, useEffect}  from 'react'
 import { StyleSheet, View } from 'react-native'
 import LottieView from 'lottie-react-native'
+import colors from "../config/colors";
 
 export default function ActivityIndicator({ visible = false, size= 150 }) {
   if (!visible) return null;
@@ -12,7 +13,7 @@ export default function ActivityIndicator({ visible = false, size= 150 }) {
   return (
     <View style={styles.overlay}>
       <LottieView 
-        style={{ width:size, height:size }} 
+        style={{ width:250, height:250 }} 
         autoPlay={true}
         ref={animation}
         source={require('../assets/animations/loading.json')}
@@ -29,8 +30,8 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     height: '100%',
     width: '100%',
-    backgroundColor: '#ffffff',
-    opacity: 0.8,
-    elevation:5,
+    backgroundColor: colors.white, 
+    opacity: 0.8,  
+    zIndex: 8,
   }
 })

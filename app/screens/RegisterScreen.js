@@ -27,7 +27,6 @@ export default function RegisterScreen() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-
   const handleSubmit = async ({name, email, password}) => {
     try {
       setLoading(true)

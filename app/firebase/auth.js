@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext }  from 'react'
 import { auth, firestore } from './firebase'
 import { useFirestoreQuery } from '../firebase/useFirestoreQuery';
-
+import * as Notifications from 'expo-notifications';
 const authContext = createContext();
 
 
@@ -19,22 +19,24 @@ export function AuthProvider({ children }) {
   const login = (email, password) => auth.signInWithEmailAndPassword(email, password);
   
   const signup = async (name, email, password) => {
-    if(!usernames?.includes(`@${name.toUpperCase()}`)){
+    if(!usernames?.includes(`${name.toUpperCase()}`)){
       const response = await auth
         .createUserWithEmailAndPassword(email, password);
       await firestore.collection('users').doc(response.user.uid).set({
       uid: response.user.uid,
       displayName: `${name}`,
-      firstName:"",
-      lastName:"",
-      address:"",
-      zipCode:"",
-      age:"",
       expoToken:""
     })
-      return await response.user.updateProfile({
-        displayName: `${name}`,
-      });
+      console.log("After creating user");
+      const permission = await Notifications.requestPermissionsAsync();
+      console.log("Permission granted: " + permission.granted);
+      if(!permission.granted) return;
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log("expoPushToken",token);
+
+      return await firestore.collection('users').doc(response.user.uid).update({
+        expoToken: token
+      })
 
     }else{
       throw new Error("This username already exists!")
@@ -43,15 +45,13 @@ export function AuthProvider({ children }) {
 
   const logout = async () =>{
     auth.signOut()
+    setUser(null);
   } 
-
   useEffect(()=> {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if(user) {
         setUser(user);
-      }
-      else{
-        setUser(null);
+        console.log(user)
       }
       setLoading(false);
     });
