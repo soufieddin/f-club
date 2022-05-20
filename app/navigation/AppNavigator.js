@@ -16,12 +16,18 @@ const AppNavigator = () => {
   return (
     <Tab.Navigator
     screenOptions={() => ({
+      tabBarOptions:{
+        style: {
+          borderTopWidth: 0, 
+          borderTopColor: "transparent"
+        }
+    },
       tabBarStyle:{
         backgroundColor: colors.primary,
         borderTopLeftRadius: 15,
         borderTopRightRadius: 15,
         paddingTop: 10,
-        height: 60,
+        height: 56,
       },
       tabBarShowLabel: false,
     })}

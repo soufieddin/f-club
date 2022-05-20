@@ -27,12 +27,9 @@ export function AuthProvider({ children }) {
       displayName: `${name}`,
       expoToken:""
     })
-      console.log("After creating user");
       const permission = await Notifications.requestPermissionsAsync();
-      console.log("Permission granted: " + permission.granted);
       if(!permission.granted) return;
       const token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log("expoPushToken",token);
 
       return await firestore.collection('users').doc(response.user.uid).update({
         expoToken: token
@@ -51,7 +48,6 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if(user) {
         setUser(user);
-        console.log(user)
       }
       setLoading(false);
     });
