@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "f-club",
+    "slug": "f-club",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./app/assets/f-icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./app/assets/f-splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#004481"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "backgroundColor": "#004481"
+      },
+      "useNextNotificationsApi": true,
+      "permissions": ["RECEIVE_BOOT_COMPLETED"]
+    },
+    "web": {
+      "favicon": "./app/assets/f-favicon.png"
+    }
+  }
+}
