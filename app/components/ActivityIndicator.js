@@ -13,7 +13,7 @@ export default function ActivityIndicator({ visible = false, size= 150 }) {
   return (
     <View style={styles.overlay}>
       <LottieView 
-        style={{ width:250, height:250 }} 
+        style={{ width:150, height:150 }} 
         autoPlay={true}
         ref={animation}
         source={require('../assets/animations/loading.json')}
