@@ -5,8 +5,8 @@ import AppForm from '../components/forms/AppForm';
 import AppFormField from '../components/forms/AppFormField';
 import SubmitButton from '../components/forms/SubmitButton';
 import ErrorMessage from '../components/forms/ErrorMessage';
-import Screen from '../components/Screen';
-import ActivityIndicator from '../components/ActivityIndicator';
+import Screen from '../components/general/Screen';
+import ActivityIndicator from '../components/general/ActivityIndicator';
 
 import * as Yup from "yup"; 
 import colors from '../config/colors';

@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import colors from '../config/colors';
-const ItemSearch = ({symbol, name, logo}) => {
+import colors from '../../config/colors';
+const ItemSearch = ({symbol, name, logo, onPress}) => {
   return (
-  <TouchableOpacity style={styles.container}>
+  <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.itemWrapper}>
       <View style={styles.itemNames}>
         <Text style={styles.shortName}>{symbol}</Text>

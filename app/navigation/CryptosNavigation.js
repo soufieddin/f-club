@@ -14,7 +14,7 @@ const CryptosNavigator = () => (
     }}
   >
     <Stack.Screen 
-      name="Cryptos page" 
+      name="Cryptos" 
       component={CryptosScreen} 
       options={{
         headerStyle: {
@@ -25,7 +25,7 @@ const CryptosNavigator = () => (
       }}
     />
     <Stack.Screen 
-      name="Crypto Detail" 
+      name="CryptoDetail" 
       component={CryptoDetailScreen}
       options={{
         headerShown:false,

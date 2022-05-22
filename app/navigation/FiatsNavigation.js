@@ -14,7 +14,7 @@ const FiatsNavigator = () => (
     }}
   >
     <Stack.Screen 
-      name="Stocks" 
+      name="Fiats" 
       component={FiatsScreen} 
       options={{
         headerStyle: {
@@ -24,7 +24,7 @@ const FiatsNavigator = () => (
       }}
     />
     <Stack.Screen 
-      name="Stock Detail" 
+      name="FiatDetail" 
       component={FiatDetailScreen}
       options={{
         headerShown:false,

@@ -1,10 +1,11 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
-import colors from '../config/colors';
-const Item = ({symbol, name, logo, price, percent}) => {
+import colors from '../../config/colors';
+const Item = ({symbol, name, logo, price, percent, onPress}) => {
   const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}`;
+  const percentSymbol = percent > 0 ? "+" : "";
   return (
-  <TouchableOpacity style={styles.container}>
+  <TouchableOpacity style={styles.container} onPress={onPress}>
     <View style={styles.itemWrapper}>
       <View style={styles.itemNames}>
         <Text style={styles.shortName}>{symbol}</Text>
@@ -12,12 +13,12 @@ const Item = ({symbol, name, logo, price, percent}) => {
       </View>
       <View style={styles.wrapper}>
         <Text style={styles.price}>
-          ${price?.toFixed(2)}
+          $ {price?.toFixed(2)}
         </Text>
       </View>
       <View style={styles.wrapper}>
         <Text style={[styles.percent, {color: percentColor}]}>
-          {percent?.toFixed(2)}%
+          {percentSymbol}{percent?.toFixed(2)}%
         </Text>
       </View>
       <View style={styles.wrapperImage}>
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   percent: {
-    fontSize: 14,
+    fontSize: 16,
     alignSelf: "center",
   },
   wrapper: {

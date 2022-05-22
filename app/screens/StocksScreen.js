@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import Screen from '../components/Screen';
+import Screen from '../components/general/Screen';
 import colors from '../config/colors'
 
 export default function StocksScreen() {

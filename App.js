@@ -4,7 +4,7 @@ import navigationTheme from './app/navigation/navigationTheme';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import { navigationRef } from './app/navigation/rootNavigation';
 import { useAuth, AuthProvider } from './app/firebase/auth';
-import OfflineNotice from './app/components/OfflineNotice';
+import OfflineNotice from './app/components/general/OfflineNotice';
 import AppNavigator from './app/navigation/AppNavigator';
 
 import { LogBox } from 'react-native'

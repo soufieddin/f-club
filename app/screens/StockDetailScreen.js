@@ -1,5 +1,5 @@
 import { Text, StyleSheet } from 'react-native';
-import Screen from '../components/Screen';
+import Screen from '../components/general/Screen';
 
 
 export default function StockDetailScreen() {

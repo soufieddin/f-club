@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import {useAuth} from '../firebase/auth';
 import colors from '../config/colors'
-import Screen from '../components/Screen';
-import ListItem from '../components/ListItem';
-import Icon from '../components/Icon';
+import Screen from '../components/general/Screen';
+import ListItem from '../components/general/ListItem';
+import Icon from '../components/general/Icon';
 
 
 export default function AccountScreen({navigation}) {

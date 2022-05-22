@@ -34,7 +34,7 @@ const AppNavigator = () => {
     >
       <Tab.Screen 
       
-        name="Cryptos" 
+        name="Cryptos page" 
         component={CryptosNavigation}
         options={{
           headerShown:false,

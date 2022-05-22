@@ -4,7 +4,7 @@ import {useNetInfo} from '@react-native-community/netinfo';
 
 import Constants from 'expo-constants';
 import AppText from './AppText'
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 function OfflineNotice() {
   const netInfo = useNetInfo();
