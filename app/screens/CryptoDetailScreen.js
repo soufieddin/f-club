@@ -7,12 +7,17 @@ import TopicCard from '../components/crypto/TopicCard'
 import MidSection from '../components/crypto/MidSection'
 import MainSection from '../components/crypto/MainSection'
 import { getData } from '../hooks/useFetch';
-
 export default function CryptoDetailScreen({ route }) {
   const crypto = route.params;
   const id = crypto.id
+  const [days, setDays] = useState("1")
+  const [label, setLabel] = useState("all")
   const cryptoUrl = `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&developer_data=false`
+  const historyUrl = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}`
   const [result, setResult] = useState({});
+  const [history, setHistory] = useState([])
+  const [selected, setSelected] = useState("chart");
+  
   const fetchCryptoData = async () => {
     const detail = await getData(cryptoUrl);
     setResult(detail);
@@ -22,17 +27,24 @@ export default function CryptoDetailScreen({ route }) {
     fetchCryptoData();
   }, [id])
 
+  const fetchCryptoHistory = async () => {
+    const historyData = await getData(historyUrl);
+    setHistory(historyData.prices);
+  }
+  useEffect(()=> {
+    fetchCryptoHistory();
+  }, [days, id])
   return (
     <Screen style={styles.container}>
       <TopicCard 
-        name={result?.name}
-        price={result?.market_data?.current_price?.usd}
-        percent={result?.market_data?.price_change_percentage_24h}
-        image={result?.image?.thumb}
+        name={result ? result.name : crypto.name}
+        price={result ? result.market_data?.current_price?.usd : crypto.current_price}
+        percent={result ? result.market_data?.price_change_percentage_1h_in_currency?.usd : crypto.price_change_percentage_1h_in_currency}
+        image={result ? result.image?.large : crypto.image}
         id={crypto.id}
       />
-      <MidSection />
-      <MainSection />
+      <MidSection setSelected={setSelected} selected={selected} />
+      <MainSection days={days} setDays={setDays} selected={selected} label={label} setLabel={setLabel} history={history} price={result ? result.market_data?.current_price?.usd : crypto.current_price} lastUpdate={result?.market_data?.last_updated}/>
     </Screen>
   )
 }

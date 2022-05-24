@@ -6,7 +6,7 @@ import { navigationRef } from './app/navigation/rootNavigation';
 import { useAuth, AuthProvider } from './app/firebase/auth';
 import OfflineNotice from './app/components/general/OfflineNotice';
 import AppNavigator from './app/navigation/AppNavigator';
-
+console.reportErrorsAsExceptions = false;
 import { LogBox } from 'react-native'
 import ignoreWarnings from 'ignore-warnings';
 

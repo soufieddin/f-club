@@ -4,34 +4,40 @@ import Item from './Item';
 import ItemSearch from './ItemSearch'
 import routes from '../../navigation/routes';
 import colors from '../../config/colors';
+import FavTabs from '../general/FavTabs'
 
-const Cryptos = ({query, flatListRef, cryptos, navigation, onRefresh, isFetching, onEndReached, results }) => {
+const Cryptos = ({query, flatListRef, cryptos, navigation, onRefresh, isFetching, onEndReached, results, tab, setTab }) => {
+  const renderItem = ({item}) => (
+    <Item 
+    symbol={item.symbol}
+    name={item.name}
+    price={item.current_price}
+    percent={item.price_change_percentage_1h_in_currency}
+    logo={item.image}
+    onPress={()=> {
+      navigation.navigate(routes.CRYPTO_DETAIL_SCREEN, item);
+    }}
+    />
+  );
+
   return (
     <View style={styles.mid}>
         <View style={styles.mid_topic}>
           <Text style={styles.main_title}>{query ? `Search results of ${query}` : "Crypto Market"}</Text>
+          <FavTabs tab={tab} setTab={setTab}/>
         </View>
         {!query ? <FlatList 
           ref={flatListRef}
           keyExtractor={(item) => item.id}
           data = {cryptos}
-          renderItem = {({item}) => (
-            <Item 
-            symbol={item.symbol}
-            name={item.name}
-            price={item.current_price}
-            percent={item.price_change_percentage_24h}
-            logo={item.image}
-            onPress={()=> {
-              navigation.navigate(routes.CRYPTO_DETAIL_SCREEN, item);
-            }}
-            />
-          )}
+          renderItem = {renderItem}
           onRefresh={onRefresh}
           refreshing={isFetching}
           onEndReached={onEndReached}
-          onEndReachedThreshold={0.5}
-        /> : 
+          onEndReachedThreshold={0.3}
+          inverted={false}
+          initialNumToRender={12}
+          /> : 
         <FlatList 
           keyExtractor={(item) => item.id}
           data = {results}
@@ -62,10 +68,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   mid_topic: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 20,
+    marginTop: 20,
   },
   text: {
     color: colors.white,

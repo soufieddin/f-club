@@ -1,11 +1,17 @@
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import React from 'react'
 import colors from '../../config/colors'
-
-const MainSection = () => {
+import RangeTabs from '../general/RangeTabs'
+import NewsTabs from '../general/NewsTabs'
+import Chart from '../general/Chart'
+const MainSection = ({days, setDays, selected, label, setLabel, history, price, lastUpdate}) => {
   return (
     <View style={styles.main}>
-      <View style={styles.mainWrapper}></View>
+      <View style={styles.mainWrapper}>
+        <Text style={styles.text}>{selected}</Text>
+        { selected === "chart" ? <RangeTabs days={days} setDays={setDays} /> :  selected === "news" ? <NewsTabs label={label} setLabel={setLabel} /> : <></>}
+        { selected === "chart" ? <Chart history={history} price={price} lastUpdate={lastUpdate}/> : <></>}
+      </View>
     </View>
   )
 }
@@ -21,5 +27,13 @@ const styles = StyleSheet.create({
     height: '100%',
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
+    paddingVertical: 20,
+    paddingHorizontal: 8,
   },
+  text: {
+    color: colors.primary,
+    fontSize: 18,
+    fontWeight:"bold",
+    textTransform: "capitalize",
+  }
 })

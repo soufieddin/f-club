@@ -2,14 +2,14 @@ import { StyleSheet, TextInput, View } from 'react-native'
 import React from 'react'
 import colors from '../../config/colors'
 
-const SearchSection = ({ onChangeText }) => {
+const SearchSection = ({ onChangeText, placeholder }) => {
 
 
   return (
     <View style={styles.top}>
       <TextInput
       style={styles.search}
-      placeholder="Search"
+      placeholder={placeholder}
       placeholderTextColor={colors.thirdly}
       onChangeText={onChangeText}
       />

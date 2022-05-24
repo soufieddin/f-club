@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import React from 'react'
+import React, {memo} from 'react'
 import colors from '../../config/colors';
 const Item = ({symbol, name, logo, price, percent, onPress}) => {
   const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}`;
@@ -13,7 +13,7 @@ const Item = ({symbol, name, logo, price, percent, onPress}) => {
       </View>
       <View style={styles.wrapper}>
         <Text style={styles.price}>
-          $ {price?.toFixed(2)}
+          $ {price?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
         </Text>
       </View>
       <View style={styles.wrapper}>
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Item
+export default memo(Item)

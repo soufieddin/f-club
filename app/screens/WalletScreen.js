@@ -2,12 +2,12 @@ import { View, Text, StyleSheet } from 'react-native';
 import Screen from '../components/general/Screen';
 import colors from '../config/colors'
 
-export default function FiatsScreen() {
+export default function WalletScreen() {
 
   return (
     <Screen style={styles.container}>
       <View style={styles.top}>
-        <Text style={styles.text}>Fiats</Text>
+        <Text style={styles.text}>Portfolio</Text>
       </View>
       <View style={styles.mid}>
       </View>

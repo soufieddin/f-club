@@ -1,16 +1,18 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Screen from '../components/general/Screen';
+import SearchSection from '../components/general/SearchSection';
 import colors from '../config/colors'
 
 export default function StocksScreen() {
+  const handleChange = (text) => {
+    const formatQuery = text.toLowerCase();
+    console.log(formatQuery);
+  }
 
   return (
     <Screen style={styles.container}>
-      <View style={styles.top}>
-        <Text style={styles.text}>Stocks</Text>
-      </View>
-      <View style={styles.mid}>
-      </View>
+      <SearchSection onChangeText={handleChange} placeholder="Search a stock..." />
+      <View style={styles.mid}></View>
     </Screen>
   )
 }
@@ -20,21 +22,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary, 
   },
-  top: {
-    backgroundColor: colors.primary,
-    height: '20%',
-    justifyContent:"center",
-    alignItems:"center",
-  }, 
   mid: {
     backgroundColor: colors.white, 
-    height: '80%',
+    height: '88%',
     borderTopRightRadius: 15,
     borderTopLeftRadius: 15,
+    paddingHorizontal: 8,
   },
-  text: {
-    color: colors.white,
-    fontSize:24,
-    fontWeight:"bold"
-  }
 })
