@@ -4,13 +4,14 @@ import colors from '../../config/colors'
 import RangeTabs from '../general/RangeTabs'
 import NewsTabs from '../general/NewsTabs'
 import Chart from '../general/Chart'
-const MainSection = ({days, setDays, selected, label, setLabel, history, price, lastUpdate}) => {
+import Info from './Info'
+const MainSection = ({days, setDays, selected, label, setLabel, history, price, lastUpdate, result}) => {
   return (
     <View style={styles.main}>
       <View style={styles.mainWrapper}>
         <Text style={styles.text}>{selected}</Text>
         { selected === "chart" ? <RangeTabs days={days} setDays={setDays} /> :  selected === "news" ? <NewsTabs label={label} setLabel={setLabel} /> : <></>}
-        { selected === "chart" ? <Chart history={history} price={price} lastUpdate={lastUpdate}/> : <></>}
+        { selected === "chart" ? <Chart history={history} price={price} lastUpdate={lastUpdate}/> : selected==="info" ? <Info result={result}/> : <></>}
       </View>
     </View>
   )

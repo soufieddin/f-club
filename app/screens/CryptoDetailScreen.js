@@ -44,7 +44,7 @@ export default function CryptoDetailScreen({ route }) {
         id={crypto.id}
       />
       <MidSection setSelected={setSelected} selected={selected} />
-      <MainSection days={days} setDays={setDays} selected={selected} label={label} setLabel={setLabel} history={history} price={result ? result.market_data?.current_price?.usd : crypto.current_price} lastUpdate={result?.market_data?.last_updated}/>
+      <MainSection days={days} setDays={setDays} selected={selected} label={label} setLabel={setLabel} history={history} price={result ? result.market_data?.current_price?.usd : crypto.current_price} lastUpdate={result?.market_data?.last_updated} result={result}/>
     </Screen>
   )
 }
