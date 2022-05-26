@@ -2,10 +2,17 @@ import { View, Text, Image, StyleSheet,TouchableWithoutFeedback } from 'react-na
 import React from 'react'
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import colors from '../../config/colors';
+import { useFirestoreQuery } from '../../firebase/useFirestoreQuery';
+import { firestore } from '../../firebase/firebase'
+import {useAuth} from '../../firebase/auth';
+import firebase from 'firebase/compat/app';
 
 const TopicCard = ({name, image, price, percent, id}) => {
+  const {user} = useAuth();
   const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}`;
   const percentSymbol = percent > 0 ? "+" : "";
+  const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
+
   return (
     <View style={styles.container}>
       <View style={styles.topicWrapper}>
@@ -27,9 +34,23 @@ const TopicCard = ({name, image, price, percent, id}) => {
               <MaterialCommunityIcons name="bell" size={20} color={colors.white}/>
             </View>
           </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={()=>console.log("Favorite", id)}>
+          <TouchableWithoutFeedback onPress={()=> {
+              let arrayAction;
+              if(!currentUser?.favorite_cryptos?.includes(id)){
+                arrayAction = firebase.firestore.FieldValue.arrayUnion;
+              }
+              else{
+                arrayAction = firebase.firestore.FieldValue.arrayRemove;
+              }
+              const doc =firestore.doc(`users/${user.uid}`);
+              doc.update({
+                favorite_cryptos:arrayAction(
+                  id
+                )
+              })
+            }}>
             <View style={styles.action}>
-              <MaterialCommunityIcons name="star" size={20} color={colors.white}/>
+              <MaterialCommunityIcons name="star" size={20} color={currentUser?.favorite_cryptos?.includes(id) ? colors.yellow : colors.white}/>
             </View>
           </TouchableWithoutFeedback>
         </View>
@@ -39,11 +60,11 @@ const TopicCard = ({name, image, price, percent, id}) => {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 8,
     height:"25%" ,
   },
   topicWrapper: {
-    padding: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
     flexDirection: 'column',
     justifyContent: 'space-between',
     backgroundColor: colors.white,

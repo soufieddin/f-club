@@ -7,4 +7,5 @@ export default {
   border: "#C0D4DF",
   red: "#E06273",
   green: "#5FBE83",
+  yellow: "#ffe234"
 }

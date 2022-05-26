@@ -37,10 +37,10 @@ export default function CryptoDetailScreen({ route }) {
   return (
     <Screen style={styles.container}>
       <TopicCard 
-        name={result ? result.name : crypto.name}
-        price={result ? result.market_data?.current_price?.usd : crypto.current_price}
-        percent={result ? result.market_data?.price_change_percentage_1h_in_currency?.usd : crypto.price_change_percentage_1h_in_currency}
-        image={result ? result.image?.large : crypto.image}
+        name={crypto.name || result?.name}
+        price={crypto.current_price || result?.market_data?.current_price?.usd}
+        percent={ crypto.price_change_percentage_24h || result.market_data?.price_change_percentage_24h }
+        image={crypto.image || result?.image?.large}
         id={crypto.id}
       />
       <MidSection setSelected={setSelected} selected={selected} />

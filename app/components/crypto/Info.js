@@ -22,10 +22,12 @@ const Info = ({result}) => {
       <View style={styles.wrapper}>
         <Text style={styles.text}>{result?.description?.en.replace( /(<([^>]+)>)/ig, '')}</Text>
       </View>
-      <View style={styles.wrapper}>
-        <Text style={styles.title}>Main category:</Text>
-        <Text style={styles.text}>{result?.categories[0]}</Text>
-      </View>
+      {result?.categories[0] && 
+        <View style={styles.wrapper}>
+          <Text style={styles.title}>Main category:</Text>
+          <Text style={styles.text}>{result?.categories[0]}</Text>
+        </View>
+      }
       <View style={styles.wrapper}>
         <Text style={styles.title}>Official website:</Text>
         <Text style={styles.link}
@@ -62,13 +64,13 @@ const Info = ({result}) => {
       }
       {result?.market_data.max_supply && 
         <View style={styles.wrapper}>
-          <Text style={styles.title}>Total supply:</Text>
+          <Text style={styles.title}>Max supply:</Text>
           <Text style={styles.text}>{numFormatter(result?.market_data.max_supply)}</Text>
         </View>
       }
       {result?.market_data.circulating_supply && 
         <View style={styles.wrapper}>
-          <Text style={styles.title}>Total supply:</Text>
+          <Text style={styles.title}>Circulating supply:</Text>
           <Text style={styles.text}>{numFormatter(result?.market_data.circulating_supply)}</Text>
         </View>
       }

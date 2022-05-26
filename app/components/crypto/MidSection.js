@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   mid: {
     marginVertical: 20,
     height: "12%",
-    paddingHorizontal: 8,
     justifyContent:"center",
     alignItems: "center",
   },
@@ -55,7 +54,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: "space-between",
     alignItems: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 40,
+    borderRadius: 15,
   },
   wrapper:{
     flexDirection: 'column',

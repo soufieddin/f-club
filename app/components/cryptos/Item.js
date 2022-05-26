@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, {memo} from 'react'
 import colors from '../../config/colors';
-const Item = ({symbol, name, logo, price, percent, onPress}) => {
+const Item = ({symbol, name, logo, price=null, percent=null, onPress}) => {
   const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}`;
   const percentSymbol = percent > 0 ? "+" : "";
   return (
@@ -13,12 +13,12 @@ const Item = ({symbol, name, logo, price, percent, onPress}) => {
       </View>
       <View style={styles.wrapper}>
         <Text style={styles.price}>
-          $ {price?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+          {price ? "$" : ""} {price?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
         </Text>
       </View>
       <View style={styles.wrapper}>
         <Text style={[styles.percent, {color: percentColor}]}>
-          {percentSymbol}{percent?.toFixed(2)}%
+          {percentSymbol}{percent && percent?.toFixed(2)}{percent ? "%" : ""}
         </Text>
       </View>
       <View style={styles.wrapperImage}>

@@ -25,7 +25,10 @@ export function AuthProvider({ children }) {
       await firestore.collection('users').doc(response.user.uid).set({
       uid: response.user.uid,
       displayName: `${name}`,
-      expoToken:""
+      email: `${email}`,
+      expoToken:"",
+      favorite_cryptos: [],
+      notifications: [],
     })
       const permission = await Notifications.requestPermissionsAsync();
       if(!permission.granted) return;
