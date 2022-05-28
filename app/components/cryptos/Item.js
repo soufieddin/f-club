@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React, {memo} from 'react'
 import colors from '../../config/colors';
 const Item = ({symbol, name, logo, price=null, percent=null, onPress}) => {
-  const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}`;
+  const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}` || `${colors.white}`;
   const percentSymbol = percent > 0 ? "+" : "";
   return (
   <TouchableOpacity style={styles.container} onPress={onPress}>

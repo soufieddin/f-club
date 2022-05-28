@@ -39,12 +39,12 @@ const AppNavigator = () => {
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="bitcoin" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="bitcoin" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
       />
 
-      <Tab.Screen 
+      {/* <Tab.Screen 
         name="Stocks page" 
         component={StocksNavigation}
         options={{
@@ -53,7 +53,7 @@ const AppNavigator = () => {
             <MaterialCommunityIcons name="chart-arc" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
-      />
+      /> */}
 
       <Tab.Screen 
         name="Wallet page" 
@@ -62,7 +62,7 @@ const AppNavigator = () => {
           headerShown:false,
           tabBarIcon: ({focused}) => (
             // <MaterialCommunityIcons name="currency-usd" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
-            <MaterialCommunityIcons name="piggy-bank" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="piggy-bank" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
 
           )
         }}
@@ -74,7 +74,7 @@ const AppNavigator = () => {
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="account-circle" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="account-circle" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
       />

@@ -9,7 +9,7 @@ import firebase from 'firebase/compat/app';
 
 const TopicCard = ({name, image, price, percent, id}) => {
   const {user} = useAuth();
-  const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}`;
+  const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}` || `${colors.white}`;
   const percentSymbol = percent > 0 ? "+" : "";
   const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
 
@@ -29,11 +29,11 @@ const TopicCard = ({name, image, price, percent, id}) => {
           </Text>
         </View>
         <View style={styles.topicActions}>
-          <TouchableWithoutFeedback onPress={()=>console.log("Notification", id)}>
+          {/* <TouchableWithoutFeedback onPress={()=>console.log("Notification", id)}>
             <View style={styles.action}>
               <MaterialCommunityIcons name="bell" size={20} color={colors.white}/>
             </View>
-          </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback> */}
           <TouchableWithoutFeedback onPress={()=> {
               let arrayAction;
               if(!currentUser?.favorite_cryptos?.includes(id)){
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   },
   topicActions: {
     flexDirection: 'row',
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     alignItems: "center",
   },
   action: {

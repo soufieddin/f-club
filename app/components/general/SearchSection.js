@@ -28,10 +28,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
   }, 
   search:{
-    borderRadius:8,
+    borderRadius: 8,
     height: 40,
     paddingHorizontal:10,
     width: "100%",
     backgroundColor: colors.white,
   },
+  btnWrapper: {
+    height: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.thirdly,
+    width: "15%",
+    borderTopRightRadius:8,
+    borderBottomRightRadius:8,
+  }
 })

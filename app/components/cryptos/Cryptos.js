@@ -5,7 +5,7 @@ import routes from '../../navigation/routes';
 import colors from '../../config/colors';
 import FavTabs from '../general/FavTabs'
 
-const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh, isFetching, results, tab, setTab }) => {
+const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh, isFetching, results, tab, setTab, onEndReached }) => {
  
   const renderItem = ({item}) => (
     <Item 
@@ -24,7 +24,9 @@ const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh,
     <View style={styles.mid}>
         <View style={styles.mid_topic}>
           <Text style={styles.main_title}>{query ? `Search results of ${query}` : "Crypto Market"}</Text>
-          <FavTabs tab={tab} setTab={setTab}/>
+          {!query &&
+            <FavTabs tab={tab} setTab={setTab}/>        
+          }
         </View>
         <FlatList 
           ref={flatListRef}
@@ -33,7 +35,8 @@ const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh,
           renderItem = {renderItem}
           onRefresh={!query ? onRefresh : null}
           refreshing={isFetching}
-          initialNumToRender={7}
+          initialNumToRender={8}
+          onEndReached={onEndReached}
           />
       </View>
   )
@@ -57,12 +60,13 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
     fontSize:24,
-    fontWeight:"bold"
+    fontWeight:"bold",
   },
   main_title: {
     fontSize: 18,
     color: colors.primary,
     fontWeight:"bold",
+    marginBottom: 20,
   },
   fav:{
     color: colors.primary,

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     width: "40%",
-    marginVertical: 20,
+    marginBottom: 20,
   },
   btn: {
     paddingVertical: 4,
