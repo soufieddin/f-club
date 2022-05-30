@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     height: "12%",
     justifyContent:"center",
     alignItems: "center",
+    paddingHorizontal: 8,
   },
   midWrapper: {
     backgroundColor: colors.white,

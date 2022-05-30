@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
       email: `${email}`,
       expoToken:"",
       favorite_cryptos: [],
-      notifications: [],
+      assets: [],
     })
       const permission = await Notifications.requestPermissionsAsync();
       if(!permission.granted) return;

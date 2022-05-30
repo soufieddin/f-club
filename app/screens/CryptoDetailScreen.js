@@ -17,10 +17,16 @@ export default function CryptoDetailScreen({ route }) {
   const [result, setResult] = useState({});
   const [history, setHistory] = useState([])
   const [selected, setSelected] = useState("chart");
-  
+  const [isFetching, setIsFetching] = useState(false);
+
   const fetchCryptoData = async () => {
+    if(isFetching){
+      return;
+    }
+    setIsFetching(true)
     const detail = await getData(cryptoUrl);
     setResult(detail);
+    setIsFetching(false);
   }
 
   useEffect(()=> {

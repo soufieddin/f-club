@@ -7,8 +7,9 @@ import { useAuth, AuthProvider } from './app/firebase/auth';
 import OfflineNotice from './app/components/general/OfflineNotice';
 import AppNavigator from './app/navigation/AppNavigator';
 console.reportErrorsAsExceptions = false;
-import { LogBox } from 'react-native'
+import { LogBox } from 'react-native';
 import ignoreWarnings from 'ignore-warnings';
+import {RecoilRoot} from 'recoil';
 
 ignoreWarnings('warn',['ViewPropTypes','[react-native-gesture-handler]'])
 
@@ -34,7 +35,9 @@ function AppContent() {
     <>
       <OfflineNotice />
       <NavigationContainer ref={navigationRef} theme={navigationTheme}>
-      { user ? ( <AppNavigator /> ) : ( <AuthNavigator />) }
+        <RecoilRoot>
+        { user ? ( <AppNavigator /> ) : ( <AuthNavigator />) }
+        </RecoilRoot>
       </NavigationContainer>
     </>
   );

@@ -3,7 +3,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import { StyleSheet, StatusBar} from 'react-native';
 import Screen from '../components/general/Screen';
 import SearchSection from '../components/general/SearchSection';
-import ActivityIndicator from '../components/general/ActivityIndicator';
 import Cryptos from '../components/cryptos/Cryptos';
 import colors from '../config/colors'
 import { getData } from '../hooks/useFetch';
@@ -13,7 +12,7 @@ import {useAuth} from '../firebase/auth';
 
 export default function CryptosScreen({ navigation }) {
   const {user} = useAuth();
-  const amount = 40;
+  const amount = 24;
   const flatListRef = useRef()
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -113,6 +112,7 @@ export default function CryptosScreen({ navigation }) {
       tab={tab}
       setTab={setTab}
       onEndReached={loadMore}
+      favos= {favos}
       />
     </Screen>
   )

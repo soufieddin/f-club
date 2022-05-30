@@ -62,7 +62,7 @@ const AppNavigator = () => {
           headerShown:false,
           tabBarIcon: ({focused}) => (
             // <MaterialCommunityIcons name="currency-usd" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
-            <MaterialCommunityIcons name="piggy-bank" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="chart-pie" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
 
           )
         }}

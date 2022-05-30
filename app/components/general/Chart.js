@@ -34,10 +34,10 @@ const Chart = ({history}) => {
           format={formatUSD}
           style={styles.price}
         />
-        <ChartXLabel format={formatDate} style={styles.price}/>
+        <ChartXLabel format={formatDate} style={styles.date}/>
       </View>
       <View style={styles.chartLineWrapper}>
-        <ChartPath height={SIZE / 2} stroke={colors.primary} width={SIZE} strokeWidth={2}/>
+        <ChartPath height={SIZE / 2.5} stroke={colors.primary} width={SIZE} strokeWidth={2}/>
         <ChartDot style={{ backgroundColor: colors.thirdly }} />
       </View>
     </ChartPathProvider>
@@ -47,17 +47,19 @@ const Chart = ({history}) => {
 export default Chart
 
 const styles = StyleSheet.create({
-  chartLineWrapper: {
-    marginTop: 10,
-  },
   chartTextsWrapper: {
     flexDirection: 'row',
     justifyContent: "space-between",
     alignItems: "center",
   }, 
   price : {
+    fontSize: 20,
+    color: colors.secondary,
+    fontWeight: "bold",
+  }, 
+  date: {
     fontSize: 14,
-    color: colors.primary,
+    color: colors.thirdly,
     fontWeight: "bold",
   }
 })

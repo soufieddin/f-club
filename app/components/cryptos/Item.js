@@ -1,31 +1,37 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import React, {memo} from 'react'
+import React, {memo, useState} from 'react'
 import colors from '../../config/colors';
-const Item = ({symbol, name, logo, price=null, percent=null, onPress}) => {
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+
+const Item = ({symbol, name, logo, price=null, percent=null, onPress, renderRightActions, favos}) => {
+  console.log(favos)
   const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}` || `${colors.white}`;
   const percentSymbol = percent > 0 ? "+" : "";
+  
   return (
-  <TouchableOpacity style={styles.container} onPress={onPress}>
-    <View style={styles.itemWrapper}>
-      <View style={styles.itemNames}>
-        <Text style={styles.shortName}>{symbol}</Text>
-        <Text style={styles.longName}>{name}</Text>
+  <Swipeable renderRightActions={renderRightActions}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
+      <View style={styles.itemWrapper}>
+        <View style={styles.itemNames}>
+          <Text style={styles.shortName}>{symbol}</Text>
+          <Text style={styles.longName}>{name}</Text>
+        </View>
+        <View style={styles.wrapper}>
+          <Text style={styles.price}>
+            {price ? "$" : ""} {price?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+          </Text>
+        </View>
+        <View style={styles.wrapper}>
+          <Text style={[styles.percent, {color: percentColor}]}>
+            {percentSymbol}{percent && percent?.toFixed(2)}{percent ? "%" : ""}
+          </Text>
+        </View>
+        <View style={styles.wrapperImage}>
+          <Image source={{uri: logo}} style={styles.logo} />
+        </View>
       </View>
-      <View style={styles.wrapper}>
-        <Text style={styles.price}>
-          {price ? "$" : ""} {price?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
-        </Text>
-      </View>
-      <View style={styles.wrapper}>
-        <Text style={[styles.percent, {color: percentColor}]}>
-          {percentSymbol}{percent && percent?.toFixed(2)}{percent ? "%" : ""}
-        </Text>
-      </View>
-      <View style={styles.wrapperImage}>
-        <Image source={{uri: logo}} style={styles.logo} />
-      </View>
-    </View>
-  </TouchableOpacity>
+    </TouchableOpacity>
+  </Swipeable>
   )
 }
 

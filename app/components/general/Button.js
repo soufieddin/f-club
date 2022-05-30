@@ -3,9 +3,9 @@ import {Text, TouchableOpacity} from "react-native";
 
 import colors from "../../config/colors";
 
-function Button({styleBtn, text, styleText, onPress, color="primary"}) {
+function Button({styleBtn, text, styleText, onPress, color="primary", disabled=false}) {
   return (
-    <TouchableOpacity style={[styleBtn, {backgroundColor:colors[color]}]} onPress={onPress} color={color}>
+    <TouchableOpacity style={[styleBtn, {backgroundColor:colors[color]}]} onPress={onPress} color={color} disabled={disabled}>
       <Text style={styleText}>{text}</Text>
     </TouchableOpacity>
 

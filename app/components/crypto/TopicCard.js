@@ -24,9 +24,11 @@ const TopicCard = ({name, image, price, percent, id}) => {
           <Text style={styles.price}>
             $ {price?.toFixed(2)}
           </Text>
-          <Text style={[styles.percent, {color: percentColor}]}>
-            {percentSymbol}{percent?.toFixed(2)}%
-          </Text>
+          <View style={[styles.percentContainer, {backgroundColor: percentColor}]}>
+            <Text style={[styles.percent, {color: colors.white}]}>
+              {percentSymbol}{percent?.toFixed(2)}%
+            </Text>
+          </View>
         </View>
         <View style={styles.topicActions}>
           {/* <TouchableWithoutFeedback onPress={()=>console.log("Notification", id)}>
@@ -61,12 +63,14 @@ const TopicCard = ({name, image, price, percent, id}) => {
 const styles = StyleSheet.create({
   container: {
     height:"25%" ,
+    paddingHorizontal: 8,
+    marginTop: 10
   },
   topicWrapper: {
     paddingHorizontal: 8,
     paddingVertical: 16,
     flexDirection: 'column',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     backgroundColor: colors.white,
     borderRadius: 16,
     height: "100%"
@@ -95,9 +99,18 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight:"bold",
     color: colors.primary,
+    alignSelf: "center",
+  },
+  percentContainer: {
+    paddingVertical:8,
+    paddingHorizontal:12,
+    borderRadius: 5,
+    marginTop: 10,
+    alignSelf: "center",
   },
   percent: {
     fontSize: 16,
+    fontWeight:"bold",
   },
   topicActions: {
     flexDirection: 'row',

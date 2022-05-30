@@ -4,14 +4,14 @@ import colors from '../../config/colors'
 const Info = ({result}) => {
 
   const numFormatter = (num) => {
-    if(num > 999 && num < 1000000){
-      return (num/1000).toFixed(1) + ' K';
-    }else if(num > 1000000 && num < 1000000000){
-      return (num/1000000).toFixed(1) + ' M';
-    }else if(num > 1000000000 && num < 1000000000000){
-      return (num/1000000000).toFixed(1) + ' B';
-    }else if(num > 1000000000000 && num < 1000000000000000){
-      return (num/1000000000000).toFixed(1) + ' T';
+    if(num > 999 && num < 1e6){
+      return (num/1e3).toFixed(1) + ' K';
+    }else if(num > 1e6 && num < 1e9){
+      return (num/1e6).toFixed(1) + ' M';
+    }else if(num > 1e9 && num < 1e12){
+      return (num/1e9).toFixed(1) + ' B';
+    }else if(num > 1e12){
+      return (num/1e12).toFixed(1) + ' T';
     }else if(num < 900){
       return num; // if value < 1000, nothing to do
     }
@@ -83,7 +83,7 @@ export default Info
 const styles = StyleSheet.create({
   container: {
     paddingTop: 10,
-    marginBottom: 60,
+    marginBottom: 80,
   },
   text: {
     color: colors.secondary,

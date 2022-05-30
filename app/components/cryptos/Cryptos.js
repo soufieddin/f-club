@@ -4,9 +4,15 @@ import Item from './Item';
 import routes from '../../navigation/routes';
 import colors from '../../config/colors';
 import FavTabs from '../general/FavTabs'
+import ListItemToggleFavoriteAction from '../general/ListItemToggleFavoriteAction'
+import { useFirestoreQuery } from '../../firebase/useFirestoreQuery';
+import { firestore } from '../../firebase/firebase'
+import {useAuth} from '../../firebase/auth';
+import firebase from 'firebase/compat/app';
 
-const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh, isFetching, results, tab, setTab, onEndReached }) => {
- 
+const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh, isFetching, results, tab, setTab, onEndReached, favos}) => {
+  const {user} = useAuth();
+  const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
   const renderItem = ({item}) => (
     <Item 
     symbol={item.symbol}
@@ -14,9 +20,29 @@ const Cryptos = ({query, flatListRef, cryptos, favosData, navigation, onRefresh,
     price={!query ? item.current_price : null}
     percent={!query ? item.price_change_percentage_24h_in_currency : null}
     logo={!query ? item.image : item.thumb}
+    favos={favos}
     onPress={()=> {
       navigation.navigate(routes.CRYPTO_DETAIL_SCREEN, item);
     }}
+    renderRightActions={()=>(<ListItemToggleFavoriteAction  
+      fav={favos.includes(item.name.toLowerCase()) ? true : false}
+      onPress={()=> {
+        let arrayAction;
+        if(!currentUser?.favorite_cryptos?.includes(item.name.toLowerCase())){
+          arrayAction = firebase.firestore.FieldValue.arrayUnion;
+        }
+        else{
+          arrayAction = firebase.firestore.FieldValue.arrayRemove;
+        }
+        const doc =firestore.doc(`users/${user.uid}`);
+        doc.update({
+          favorite_cryptos:arrayAction(
+            item.name.toLowerCase()
+          )
+        })
+      }}
+    
+    />)}
     />
   );
   
