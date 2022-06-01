@@ -8,14 +8,22 @@ const TopicInfo = () => {
     <View style={styles.view}>
       <View style={styles.container}>
         <View style={styles.wrapper}>
-          <View>
-            <Text style={styles.title}>Current Balance</Text>
-            <Text style={styles.price}>$ 4,512.20</Text>
-            <Text style={styles.refund}>$ 810 (All Time)</Text>
+          <View style={styles.infoItem}>
+            <Text style={styles.title}>Balance</Text>
+            <Text style={styles.numberBig}>$ 4,512.20</Text>
+            <View style={styles.percentContainer}>
+              <Text style={styles.percent}>+1.8%</Text>
+            </View>
           </View>
-          <View style={styles.percentContainer}>
-            <Text style={styles.percent}>+1.8%</Text>
+          <View style={styles.infoItem}>
+            <Text style={styles.title}>Capital</Text>
+            <Text style={styles.number}>$ 3,720.65</Text>
           </View>
+          <View style={styles.infoItem}>
+            <Text style={styles.title}>Profit</Text>
+            <Text style={styles.number}>$ 810 (All Time)</Text>
+          </View>
+          
         </View>
       </View>
     </View>
@@ -26,7 +34,7 @@ export default TopicInfo
 
 const styles = StyleSheet.create({
   view: {
-    height:"20%",
+    height:"25%",
     width: "100%",
     marginBottom: 20,
     paddingHorizontal: 8,
@@ -41,40 +49,42 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   wrapper: {
-    paddingHorizontal: 8,
-    paddingVertical: 16,
-    flexDirection: 'column',
-    justifyContent: 'space-around',
+    height: "100%",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
   },  
   title: {
-    fontSize: 20,
-    color: colors.primary,
+    fontSize: 18,
+    color: colors.thirdly,
+    fontWeight:"bold",
   },
   wrapper: {
-    flexDirection: 'row',
-    justifyContent: "space-between",
-    alignItems: "center",
     paddingHorizontal: 8,
+    marginTop: 10
   },
-  price: {
-    fontSize: 32,
+  number: {
+    fontSize: 16,
+    fontWeight:"bold",
+    color: colors.secondary,
+  },
+  numberBig: {
+    fontSize: 24,
     fontWeight:"bold",
     color: colors.primary,
-    marginVertical:5,
+    width: "50%",
+    textAlign: "center",
   },
   percentContainer: {
-    paddingVertical:8,
-    paddingHorizontal:12,
+    paddingVertical:4,
+    paddingHorizontal:8,
     backgroundColor: colors.green,
     borderRadius: 5,
   },
   percent: {
     fontSize: 16,
     color: colors.white,
-  }, 
-  refund: {
-    fontSize: 16,
-    color: colors.thirdly,
+    fontWeight:"bold",
   },
   label: {
     fontSize: 20,
@@ -84,4 +94,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     marginTop: 20
   },
+  infoItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingTop:5,
+    paddingBottom:10,
+    borderColor: colors.border,
+    borderBottomWidth: 1,
+    marginBottom: 5,
+    
+  }
 })

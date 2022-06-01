@@ -1,10 +1,9 @@
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import React, {memo, useState} from 'react'
+import React, {memo} from 'react'
 import colors from '../../config/colors';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-const Item = ({symbol, name, logo, price=null, percent=null, onPress, renderRightActions, favos}) => {
-  console.log(favos)
+const Item = ({symbol, name, logo, price=null, percent=null, onPress, renderRightActions}) => {
   const percentColor = percent > 0 ? `${colors.green}` : `${colors.red}` || `${colors.white}`;
   const percentSymbol = percent > 0 ? "+" : "";
   

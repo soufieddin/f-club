@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     height: '100%',
     width: '100%',
-    backgroundColor: colors.white, 
-    opacity: 0.8,  
+    backgroundColor: colors.white,  
     zIndex: 8,
   }
 })

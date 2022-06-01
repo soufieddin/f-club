@@ -1,8 +1,9 @@
-import { StyleSheet, TextInput, View } from 'react-native'
+import { StyleSheet, TextInput, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 import colors from '../../config/colors'
+import {MaterialCommunityIcons} from '@expo/vector-icons'
 
-const SearchSection = ({ onChangeText, placeholder }) => {
+const SearchSection = ({ onChangeText, placeholder, query, onSearch, onReset, value}) => {
 
 
   return (
@@ -12,7 +13,17 @@ const SearchSection = ({ onChangeText, placeholder }) => {
       placeholder={placeholder}
       placeholderTextColor={colors.thirdly}
       onChangeText={onChangeText}
+      value={value}
       />
+      { query ? 
+        <TouchableOpacity style={styles.btnAdd} onPress={onReset}>
+          <MaterialCommunityIcons name="close" size={20} color={colors.white} />
+        </TouchableOpacity> 
+        : 
+        <TouchableOpacity style={styles.btnAdd} onPress={onSearch}>
+          <MaterialCommunityIcons name="magnify" size={20} color={colors.white} />
+        </TouchableOpacity>
+      }
     </View>
   )
 }
@@ -24,23 +35,26 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     height: '12%',
     paddingHorizontal: 8,
-    justifyContent:"center",
+    justifyContent:"space-between",
     alignItems: "center",
+    flexDirection:"row",
   }, 
   search:{
-    borderRadius: 8,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+
     height: 40,
     paddingHorizontal:10,
-    width: "100%",
+    width: "90%",
     backgroundColor: colors.white,
   },
-  btnWrapper: {
+  btnAdd: {
+    width: "10%",
     height: 40,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: colors.thirdly,
-    width: "15%",
-    borderTopRightRadius:8,
-    borderBottomRightRadius:8,
-  }
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor: colors.thirdly, 
+  },
 })

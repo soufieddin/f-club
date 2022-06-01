@@ -4,7 +4,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons'
 
 
 import CryptosNavigation from './CryptosNavigation';
-import StocksNavigation from './StocksNavigation';
+import FavoritesNavigation from './FavoritesNavigation';
 import WalletNavigation from './WalletNavigation';
 import AccountNavigator from './AccountNavigator'
 import colors from '../config/colors'
@@ -44,16 +44,16 @@ const AppNavigator = () => {
         }}
       />
 
-      {/* <Tab.Screen 
-        name="Stocks page" 
-        component={StocksNavigation}
+      <Tab.Screen 
+        name="Favorites page" 
+        component={FavoritesNavigation}
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="chart-arc" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="star" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
-      /> */}
+      />
 
       <Tab.Screen 
         name="Wallet page" 
