@@ -46,13 +46,27 @@ export function AuthProvider({ children }) {
   const logout = async () =>{
     auth.signOut()
     setUser(null);
-  } 
+  }
+  
+  const deleteAccount = async () =>{
+    const user = auth.currentUser;
+    await firestore.collection('users').doc(user.uid).delete();
+    user.delete().then(() => {
+      setUser(null);
+    }).catch((error) => {
+      console.log(error)
+    });
+  }
   useEffect(()=> {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if(user) {
         setUser(user);
+        setLoading(false);
+      }else{
+        setUser(null);
+        setLoading(false);
       }
-      setLoading(false);
+      
     });
     return () => unsubscribe();
   },[])
@@ -61,7 +75,8 @@ export function AuthProvider({ children }) {
     user,
     login,
     logout,
-    signup
+    signup,
+    deleteAccount
   }
 
   return (
