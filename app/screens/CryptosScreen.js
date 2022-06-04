@@ -4,7 +4,6 @@ import { StyleSheet, StatusBar} from 'react-native';
 import Screen from '../components/general/Screen';
 import SearchSection from '../components/general/SearchSection';
 import Cryptos from '../components/cryptos/Cryptos';
-import Favorites from '../components/cryptos/Favorites';
 
 import colors from '../config/colors'
 import { getData } from '../hooks/useFetch';
@@ -35,8 +34,6 @@ export default function CryptosScreen({ navigation }) {
     }
     setIsFetching(true)
     const marketData = await getData(cryptosUrl);
-    //const filteredData = (existingCryptos) => ([...existingCryptos, ...marketData])
-    //setCryptos(filteredData.filter((item, pos) => filteredData.indexOf(item) === pos));
     setCryptos((existingCryptos) => ([...existingCryptos, ...marketData]))
     setIsFetching(false);
   }
@@ -77,7 +74,7 @@ export default function CryptosScreen({ navigation }) {
     setResults([]);
     setValue("");
     setQueryToSearch("");
-    setCryptos([]);
+    onRefresh();
   }
 
 
