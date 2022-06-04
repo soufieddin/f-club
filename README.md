@@ -1,5 +1,7 @@
 # F-club
 
+A mobile app that allows users to watch the price and news of all Cryptocurrencies, as well as keep track of their portfolio!
+
 # Github repo link
 
 https://github.com/soufieddin/f-club/tree/main
