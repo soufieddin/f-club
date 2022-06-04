@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
 
   wrapper: {
     backgroundColor:colors.secondary,
-    width:55,
-    height:55,
+    width:57,
+    height:57,
     justifyContent:"center",
     alignItems:"center",
     zIndex: 10,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback} from 'react-native';
+import { StyleSheet, View, TouchableOpacity} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 import colors from "../../config/colors";
@@ -7,28 +7,29 @@ import colors from "../../config/colors";
 
 export default function ListItemSellAction({onPress}) {
   return (
-    <TouchableWithoutFeedback onPress={onPress} style={styles.edit}>
+    <TouchableOpacity onPress={onPress} style={styles.edit}>
       <View style={styles.wrapper}>
-      <MaterialCommunityIcons name="trash-can" size={27} color={colors.white}/>
-
+        <MaterialCommunityIcons name="trash-can" size={27} color={colors.white}/>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableOpacity>
 
   )
 }
 
 const styles = StyleSheet.create({
- 
+  edit:{
+    alignSelf:"center",
+    marginBottom:10,
+  },
   wrapper: {
     backgroundColor:colors.secondary,
     width:57,
-    height: 57,
+    height:57,
     justifyContent:"center",
     alignItems:"center",
     zIndex: 10,
     elevation: 10,
     borderRadius: 5,
-    marginBottom:10,
     alignSelf:"center",
   },
   text: {

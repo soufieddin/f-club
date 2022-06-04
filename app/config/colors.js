@@ -5,6 +5,7 @@ export default {
   light: "#92AFC9",
   white: "#fff",
   border: "#C0D4DF",
+  borderLight: "#F5F8FA",
   red: "#E06273",
   green: "#5FBE83",
   yellow: "#ffe234",

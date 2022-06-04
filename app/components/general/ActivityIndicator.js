@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: colors.white,  
     zIndex: 8,
+    elevation: 8,
     opacity: 0.95,
   }
 })

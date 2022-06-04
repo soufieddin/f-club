@@ -1,16 +1,19 @@
 import { StyleSheet, StatusBar } from 'react-native';
 import Screen from '../components/general/Screen';
 import colors from '../config/colors'
-import TopicInfo from '../components/portfolio/TopicInfo'
 import Assets from '../components/portfolio/Assets'
-import React from 'react'
-export default function WalletScreen() {
+import React, {useState }from 'react'
+import ActivityIndicator from '../components/general/ActivityIndicator';
 
+export default function WalletScreen() {
+  const [loading, setLoading] = useState(false)
   return (
-    <Screen style={styles.container}>
-      <TopicInfo />
-      <Assets />
-    </Screen>
+    <>
+      <ActivityIndicator visible={loading} />
+      <Screen style={styles.container}>
+        <Assets setLoading={setLoading} />
+      </Screen>
+    </>
   )
 }
 
