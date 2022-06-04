@@ -1,18 +1,10 @@
-# f-club
-> Why do I have a folder named ".expo" in my project??
+# F-club
 
-The ".expo" folder is created when an Expo project is started using "expo start" command.
+> Github repo link
+> https://github.com/soufieddin/f-club/tree/main
 
-> What does the "packager-info.json" file contain?
+> Link to App
+> exp://exp.host/@aideso/f-club?release-channel=default
 
-The "packager-info.json" file contains port numbers and process PIDs that are used to serve the application to the mobile device/simulator.
-
-> What does the "settings.json" file contain?
-
-The "settings.json" file contains the server configuration that is used to serve the application manifest.
-
-> Should I commit the ".expo" folder?
-
-No, you should not share the ".expo" folder. It does not contain any information that is relevant for other developers working on the project, it is specific to your machine.
-
-Upon project creation, the ".expo" folder is already added to your ".gitignore" file.
+> QR to App
+> ![qrcode to expo app](https://qr.expo.dev/expo-go?owner=aideso&slug=f-club&releaseChannel=default&host=exp.host)

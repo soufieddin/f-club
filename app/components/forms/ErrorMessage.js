@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
-import AppText from '../AppText'
+import AppText from '../general/AppText'
 import colors from '../../config/colors'
 
 export default function ErrorMessage({error, visible}) {

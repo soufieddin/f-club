@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import {useFormikContext} from 'formik'
-import Button from '../Button';
+import Button from '../general/Button';
 import colors from "../../config/colors";
 
 export default function SubmitButton({text}) {

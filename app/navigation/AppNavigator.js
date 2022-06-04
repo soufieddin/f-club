@@ -4,8 +4,8 @@ import {MaterialCommunityIcons} from '@expo/vector-icons'
 
 
 import CryptosNavigation from './CryptosNavigation';
-import StocksNavigation from './StocksNavigation';
-import FiatsNavigation from './FiatsNavigation';
+import FavoritesNavigation from './FavoritesNavigation';
+import WalletNavigation from './WalletNavigation';
 import AccountNavigator from './AccountNavigator'
 import colors from '../config/colors'
 const Tab = createBottomTabNavigator();
@@ -34,34 +34,36 @@ const AppNavigator = () => {
     >
       <Tab.Screen 
       
-        name="Cryptos" 
+        name="Cryptos page" 
         component={CryptosNavigation}
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="bitcoin" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="bitcoin" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
       />
 
       <Tab.Screen 
-        name="Stocks page" 
-        component={StocksNavigation}
+        name="Favorites page" 
+        component={FavoritesNavigation}
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="chart-arc" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="star" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
       />
 
       <Tab.Screen 
-        name="Fiat" 
-        component={FiatsNavigation}
+        name="Wallet page" 
+        component={WalletNavigation}
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="currency-usd" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            // <MaterialCommunityIcons name="currency-usd" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="chart-pie" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
+
           )
         }}
       />
@@ -72,7 +74,7 @@ const AppNavigator = () => {
         options={{
           headerShown:false,
           tabBarIcon: ({focused}) => (
-            <MaterialCommunityIcons name="account-circle" size={32} color={focused ? `${colors.white}` : `${colors.light}`}/>
+            <MaterialCommunityIcons name="account-circle" size={36} color={focused ? `${colors.white}` : `${colors.light}`}/>
           )
         }}
       />

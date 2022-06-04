@@ -1,37 +1,36 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import CryptosScreen from '../screens/CryptosScreen';
-import CryptoDetailScreen from '../screens/CryptoDetailScreen';
+import WalletScreen from '../screens/WalletScreen';
+//import FiatDetailScreen from '../screens/FiatDetailScreen';
 import colors from "../config/colors"
 
 const Stack = createStackNavigator();
 
-const CryptosNavigator = () => (
+const WalletNavigator = () => (
   <Stack.Navigator  screenOptions={{
     presentation:"modal",
     headerShown:false,
     }}
   >
     <Stack.Screen 
-      name="Cryptos" 
-      component={CryptosScreen} 
+      name="Wallet" 
+      component={WalletScreen} 
       options={{
         headerStyle: {
           backgroundColor: colors.primary,
         },
         headerTintColor: colors.white,
-        labeled: false,
       }}
     />
-    <Stack.Screen 
-      name="CryptoDetail" 
-      component={CryptoDetailScreen}
+    {/* <Stack.Screen 
+      name="FiatDetail" 
+      component={FiatDetailScreen}
       options={{
         headerShown:false,
       }}
-    />
+    /> */}
   </Stack.Navigator>
 )
 
-export default CryptosNavigator;
+export default WalletNavigator;
