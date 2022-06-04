@@ -10,8 +10,6 @@ import firebase from 'firebase/compat/app';
 
 const Cryptos = ({query, flatListRef, cryptos, navigation, onRefresh, isFetching, results, onEndReached, favos}) => {
   const {user} = useAuth();
-  // const [fav, setFav] = useState(false)
-  // const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
   const renderItem = ({item}) => (
     <Item 
     symbol={item.symbol}
@@ -26,7 +24,6 @@ const Cryptos = ({query, flatListRef, cryptos, navigation, onRefresh, isFetching
     renderRightActions={()=>(<ListItemToggleFavoriteAction  
       fav={favos?.includes(item.name.toLowerCase()) ? true : false}
       onPress={()=> {
-        //setFav(!fav)
         let arrayAction;
         if(!favos.includes(item.name.toLowerCase())){
           arrayAction = firebase.firestore.FieldValue.arrayUnion;
@@ -58,7 +55,7 @@ const Cryptos = ({query, flatListRef, cryptos, navigation, onRefresh, isFetching
           renderItem = {renderItem}
           onRefresh={!query ? onRefresh : null}
           refreshing={isFetching}
-          initialNumToRender={8}
+          initialNumToRender={7}
           onEndReached={onEndReached}
           />
       </View>
