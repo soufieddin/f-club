@@ -4,7 +4,7 @@ import { BottomSheet } from 'react-native-btr';
 import colors from '../../config/colors'
 import Button from '../general/Button'
 
-const BottomMadalSell = ({visibleSell, maxAmountSell, setAmountToSell, amountToSell, symbolSell, onDeleteAsset}) => {
+const BottomMadalSell = ({visibleSell, setVisibleSell, maxAmountSell, setAmountToSell, amountToSell, symbolSell, onDeleteAsset}) => {
   
   const toggleBottomNavigationViewSell = () => {
     //Toggling the visibility state of the bottom sheet
