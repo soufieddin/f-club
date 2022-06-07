@@ -114,22 +114,16 @@ const Assets = ({setLoading}) => {
         });
       newAsset.amount = amountToUpdate;
       newAsset.totalPrice = amountToUpdate * boughtPrice;
-      setLoading(false);
-      setId("")
-      setSymbol("")
-      setAmount(0)
-      setBoughtPrice(0)
-    } else {
-      await doc.update({
-        assets: firebase.firestore.FieldValue.arrayUnion(newAsset),
-      });
-      setLoading(false);
-      setId("")
-      setSymbol("")
-      setAmount(0)
-      setBoughtPrice(0)
-      fetchAssetsData();
-    }
+    } 
+    await doc.update({
+      assets: firebase.firestore.FieldValue.arrayUnion(newAsset),
+    });
+    setLoading(false);
+    setId("")
+    setSymbol("")
+    setAmount(0)
+    setBoughtPrice(0)
+    fetchAssetsData();
   }
 
   const onDeleteAsset = async () => {

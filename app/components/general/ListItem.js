@@ -6,7 +6,7 @@ import AppText from './AppText';
 
 function ListItem({title, IconComponent, image, onPress}) {
   return (
-    <TouchableHighlight onPress={onPress} underlayColor={colors.xlight}>
+    <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
       <View style={styles.wrapper}>
         {IconComponent}
         {image && <Image style={styles.image} source={{uri: image}} />} 

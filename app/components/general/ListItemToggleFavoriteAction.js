@@ -9,9 +9,7 @@ export default function ListItemToggleFavoriteAction({onPress, fav}) {
   return (
     <TouchableWithoutFeedback onPress={onPress} style={styles.del}>
       <View style={styles.wrapper}>
-        {/* {fav ? (<MaterialCommunityIcons name="star" size={27} color={colors.yellow} />) : (<MaterialCommunityIcons name="star-outline" size={27} color={colors.white} />)} */}
         {fav ? (<MaterialCommunityIcons name="star" size={27} color={colors.yellow} />) : (<MaterialCommunityIcons name="star-outline" size={27} color={colors.white} />)}
-
       </View>
     </TouchableWithoutFeedback>
 
