@@ -1,10 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
-
 import { StyleSheet, StatusBar} from 'react-native';
 import Screen from '../components/general/Screen';
 import SearchSection from '../components/general/SearchSection';
 import Cryptos from '../components/cryptos/Cryptos';
-
 import colors from '../config/colors'
 import { getData } from '../hooks/useFetch';
 import { useFirestoreQuery } from '../firebase/useFirestoreQuery';
@@ -12,9 +10,15 @@ import { firestore } from '../firebase/firebase'
 import {useAuth} from '../firebase/auth';
 
 export default function CryptosScreen({ navigation }) {
+
+  //initial values
   const {user} = useAuth();
   const amount = 24;
-  const flatListRef = useRef()
+  const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
+  const favos = currentUser?.favorite_cryptos;
+  const flatListRef = useRef();
+
+  //states
   const [query, setQuery] = useState("");
   const [queryToSearch, setQueryToSearch] = useState("");
   const [value, setValue] = useState("")
@@ -23,11 +27,24 @@ export default function CryptosScreen({ navigation }) {
   const [isFetching, setIsFetching] = useState(false);
   const [tab, setTab] = useState("all");
   const [page, setPage] = useState(1);
-  const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
-  const favos = currentUser?.favorite_cryptos;
+
+  // urls
   const cryptosUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${amount}&page=${page}&sparkline=false&price_change_percentage=24h`
   const searchUrl = `https://api.coingecko.com/api/v3/search?query=${query}`
- 
+
+ //useEffects
+  if(query !== "") {
+    useEffect(()=> {
+      fetchSearchResultsData();
+    }, [query])
+  }
+  if(query === "") {
+    useEffect(()=> {
+      fetchMarketData();
+    }, [page])
+  }
+
+  //Functions
   const fetchMarketData = async () => {
     if(isFetching){
       return;
@@ -48,15 +65,40 @@ export default function CryptosScreen({ navigation }) {
     setIsFetching(false);
   }
 
+  const handleReset = async () => {
+    if(isFetching){
+      console.log("waiting")
+      return;
+    }
+    setQuery("");
+    setResults([]);
+    setValue("");
+    setQueryToSearch("");
+    setCryptos([])
+    setPage(1)
+  }
 
-  if(query !== "") {
-    useEffect(()=> {
-      fetchSearchResultsData();
-    }, [query, page])
-  }else if(query === "") {
-    useEffect(()=> {
-      fetchMarketData();
-    }, [query, page])
+  const onRefresh = async () => {
+    if(isFetching){
+      console.log("waiting")
+      return;
+    }
+    console.log("working")
+    setCryptos([]);
+    setIsFetching(true);
+    setPage(1);
+    fetchMarketData();
+    setIsFetching(false);
+    console.log("fin")
+  };
+
+  const loadMore = async () => {
+    if(isFetching){
+      return;
+    }
+    setIsFetching(true)
+    setPage(page + 1);
+    setIsFetching(false)
   }
 
   const handleChange = async (text) => {
@@ -66,37 +108,10 @@ export default function CryptosScreen({ navigation }) {
   }
 
   const handleSearch = async () => {
+    setCryptos([]);
     setQuery(queryToSearch ? queryToSearch : "");
   }
 
-  const handleReset = async () => {
-    setQuery("");
-    setResults([]);
-    setValue("");
-    setQueryToSearch("");
-    onRefresh();
-  }
-
-
-
-  const onRefresh = async () => {
-    if(isFetching){
-      return;
-    }
-    setIsFetching(true);
-    setCryptos([]);
-    setPage(1);
-    setIsFetching(false);
-  };
-
-  const loadMore = async () => {
-    if(isFetching){
-      return;
-    }
-    setIsFetching(true)
-    setPage((cryptos.length / amount) + 1);
-    setIsFetching(false)
-  }
   return (
     <Screen style={styles.container}>
       <SearchSection onChangeText={handleChange} query={query} onSearch={handleSearch} onReset={handleReset} value={value} placeholder="Search a crypto..." />

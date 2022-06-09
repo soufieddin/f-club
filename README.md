@@ -1,10 +1,17 @@
 # F-club
 
-> Github repo link
-> https://github.com/soufieddin/f-club/tree/main
+A mobile app that allows users to watch the price and news of all Cryptocurrencies, as well as keep track of their portfolio!
 
-> Link to App
-> exp://exp.host/@aideso/f-club?release-channel=default
+## Link to the github repository
 
-> QR to App
-> ![qrcode to expo app](https://qr.expo.dev/expo-go?owner=aideso&slug=f-club&releaseChannel=default&host=exp.host)
+https://github.com/soufieddin/f-club/tree/main
+
+## You can open the app via link or qrcode(recomended)
+
+### Link to the app (open this link on your mobile device).
+
+exp://exp.host/@aideso/f-club?release-channel=default
+
+### Or Scan this QR code.
+
+![qrcode to expo app](https://qr.expo.dev/expo-go?owner=aideso&slug=f-club&releaseChannel=default&host=exp.host)

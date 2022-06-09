@@ -58,7 +58,7 @@ const BottomModalAdd = ({allCoins, id, setId, symbol, setSymbol, boughtPrice, se
       </View>
         <TextInput
           keyboardType = 'numeric'
-          placeholder="Buying Price in $"
+          placeholder="Buying Price in $ / one crypto"
           placeholderTextColor={colors.light}
           style={styles.input}
           onChangeText={(text)=>setBoughtPrice(text)}

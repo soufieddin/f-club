@@ -114,22 +114,16 @@ const Assets = ({setLoading}) => {
         });
       newAsset.amount = amountToUpdate;
       newAsset.totalPrice = amountToUpdate * boughtPrice;
-      setLoading(false);
-      setId("")
-      setSymbol("")
-      setAmount(0)
-      setBoughtPrice(0)
-    } else {
-      await doc.update({
-        assets: firebase.firestore.FieldValue.arrayUnion(newAsset),
-      });
-      setLoading(false);
-      setId("")
-      setSymbol("")
-      setAmount(0)
-      setBoughtPrice(0)
-      fetchAssetsData();
-    }
+    } 
+    await doc.update({
+      assets: firebase.firestore.FieldValue.arrayUnion(newAsset),
+    });
+    setLoading(false);
+    setId("")
+    setSymbol("")
+    setAmount(0)
+    setBoughtPrice(0)
+    fetchAssetsData();
   }
 
   const onDeleteAsset = async () => {
@@ -229,7 +223,7 @@ const Assets = ({setLoading}) => {
       <TopicInfo capital={capital} profit={profit} balance={balance} percent={currentPercent}/>
       <View style={styles.container}>
         <BottomModalAdd allCoins={allCoins} id={id} setId={setId} symbol={symbol} setSymbol={setSymbol} boughtPrice={boughtPrice} setBoughtPrice={setBoughtPrice} amount={amount} setAmount={setAmount} visible={visible} setVisible={setVisible} onAddNewAsset={onAddNewAsset}/>
-        <BottomModalSell visibleSell={visibleSell}  maxAmountSell={maxAmountSell} setAmountToSell={setAmountToSell} amountToSell={amountToSell} symbolSell={symbolSell} onDeleteAsset={onDeleteAsset}/>
+        <BottomModalSell visibleSell={visibleSell} setVisibleSell={setVisibleSell}  maxAmountSell={maxAmountSell} setAmountToSell={setAmountToSell} amountToSell={amountToSell} symbolSell={symbolSell} onDeleteAsset={onDeleteAsset}/>
         <View style={styles.top}>
           <Text style={styles.label}>Your Assets</Text>
           <TouchableOpacity style={styles.btnAdd} onPress={()=>setVisible(true)}>
