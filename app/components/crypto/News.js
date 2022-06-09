@@ -16,6 +16,7 @@ const News = ({newsItems}) => {
       })}
     />
   );
+  console.log(newsItems)
   return (
     <FlatList 
       keyExtractor={(item) => item.title}
