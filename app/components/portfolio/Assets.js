@@ -149,7 +149,6 @@ const Assets = ({setLoading}) => {
       setLoading(false);
       setAmountToSell(0)
       fetchAssetsData();
-
     }
     else if(+amountToUpdate >= 1) {
       await doc.update({
@@ -172,7 +171,13 @@ const Assets = ({setLoading}) => {
     ids = myAssets.map((obj) => obj.id);
     coins?.forEach((coin) => {
       if(names.includes(coin.id)){
-        currentTotalPriceForAsset = (coin.current_price) * (myAssets.find((e) => e.name === coin.id).amount)
+        const neededAsset = myAssets.filter((e) => e.name === coin.id)
+        if(neededAsset?.length === 1 ){
+          currentTotalPriceForAsset = (coin.current_price) * (myAssets.find((e) => e.name === coin.id).amount)
+        }
+        else if(neededAsset?.length > 1){
+          currentTotalPriceForAsset = (coin.current_price) * (myAssets.filter((e) => e.name === coin.id).map((obj) => obj.amount).reduce((partialSum, a) => partialSum + a, 0))
+        }
       }
       targetCoins.push(currentTotalPriceForAsset)
     })
@@ -183,7 +188,6 @@ const Assets = ({setLoading}) => {
       profit = balance - capital;
     }else{
       profit = null;
-
     }
     if(profit && capital) {
       currentPercent = ((profit / capital) * 100);
