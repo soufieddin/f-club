@@ -10,14 +10,12 @@ import { firestore } from '../firebase/firebase'
 import {useAuth} from '../firebase/auth';
 
 export default function CryptosScreen({ navigation }) {
-
   //initial values
   const {user} = useAuth();
   const amount = 24;
   const { data: currentUser } = useFirestoreQuery(firestore.collection('users').doc(user.uid));
   const favos = currentUser?.favorite_cryptos;
   const flatListRef = useRef();
-
   //states
   const [query, setQuery] = useState("");
   const [queryToSearch, setQueryToSearch] = useState("");
@@ -27,11 +25,9 @@ export default function CryptosScreen({ navigation }) {
   const [isFetching, setIsFetching] = useState(false);
   const [tab, setTab] = useState("all");
   const [page, setPage] = useState(1);
-
   // urls
   const cryptosUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${amount}&page=${page}&sparkline=false&price_change_percentage=24h`
   const searchUrl = `https://api.coingecko.com/api/v3/search?query=${query}`
-
  //useEffects
   if(query !== "") {
     useEffect(()=> {
@@ -43,7 +39,6 @@ export default function CryptosScreen({ navigation }) {
       fetchMarketData();
     }, [page])
   }
-
   //Functions
   const fetchMarketData = async () => {
     if(isFetching){
@@ -77,7 +72,7 @@ export default function CryptosScreen({ navigation }) {
     setCryptos([])
     setPage(1)
   }
-
+  
   const onRefresh = async () => {
     if(isFetching){
       console.log("waiting")

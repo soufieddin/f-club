@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-
 import { StyleSheet, StatusBar } from 'react-native';
 import Screen from '../components/general/Screen';
 import colors from '../config/colors'
@@ -23,11 +22,12 @@ export default function CryptoDetailScreen({ route }) {
   const [selected, setSelected] = useState("chart");
   const [isFetching, setIsFetching] = useState(false);
   const [news, setNews] = useState([]);
-
+  
+  //useEffects
   useEffect(()=> {
     fetchCryptoData();
   }, [id])
-
+  
   useEffect(()=> {
     fetchNewsData();
   }, [label, cryptoSymbol])
@@ -36,6 +36,7 @@ export default function CryptoDetailScreen({ route }) {
     fetchCryptoHistory();
   }, [days, id])
 
+  //Functions
   const fetchCryptoData = async () => {
     if(isFetching){
       return;

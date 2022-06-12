@@ -13,5 +13,6 @@ https://github.com/soufieddin/f-club/tree/main
 exp://exp.host/@aideso/f-club?release-channel=default
 
 ### Or Scan this QR code.
+#### If you cant find the QR code, open qrcode.png
 
 ![qrcode to expo app](https://qr.expo.dev/expo-go?owner=aideso&slug=f-club&releaseChannel=default&host=exp.host)

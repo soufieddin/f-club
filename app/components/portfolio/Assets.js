@@ -6,14 +6,12 @@ import {MaterialCommunityIcons} from '@expo/vector-icons'
 import TopicInfo from './TopicInfo'
 import BottomModalAdd from './BottomModalAdd'
 import BottomModalSell from './BottomMadalSell'
-
 import {useAuth} from '../../firebase/auth';
 import firebase from 'firebase/compat/app';
 import { getData } from '../../hooks/useFetch';
 import { firestore } from '../../firebase/firebase'
 import { useFirestoreQuery } from '../../firebase/useFirestoreQuery';
 import ListItemSellAction from '../general/ListItemSellAction'
-
 const Assets = ({setLoading}) => {
   //initialValues
   const user = useAuth();
@@ -26,8 +24,7 @@ const Assets = ({setLoading}) => {
   let balance = null;
   let targetCoins = [];
   let currentPercent = null;
-  let currentTotalPriceForAsset = 0;
-  
+  let currentTotalPriceForAsset = 0
   //States
   const [isFetching, setIsFetching] = useState(false);
   const [allCoins, setAllCoins] = useState([])
@@ -217,13 +214,14 @@ const Assets = ({setLoading}) => {
       }/>)}
     />
   );
-  
   return (
     <>
       <TopicInfo capital={capital} profit={profit} balance={balance} percent={currentPercent}/>
       <View style={styles.container}>
-        <BottomModalAdd allCoins={allCoins} id={id} setId={setId} symbol={symbol} setSymbol={setSymbol} boughtPrice={boughtPrice} setBoughtPrice={setBoughtPrice} amount={amount} setAmount={setAmount} visible={visible} setVisible={setVisible} onAddNewAsset={onAddNewAsset}/>
-        <BottomModalSell visibleSell={visibleSell} setVisibleSell={setVisibleSell}  maxAmountSell={maxAmountSell} setAmountToSell={setAmountToSell} amountToSell={amountToSell} symbolSell={symbolSell} onDeleteAsset={onDeleteAsset}/>
+        <BottomModalAdd allCoins={allCoins} id={id} setId={setId} symbol={symbol} setSymbol={setSymbol} boughtPrice={boughtPrice} setBoughtPrice={setBoughtPrice} 
+        amount={amount} setAmount={setAmount} visible={visible} setVisible={setVisible} onAddNewAsset={onAddNewAsset}/>
+        <BottomModalSell visibleSell={visibleSell} setVisibleSell={setVisibleSell}  maxAmountSell={maxAmountSell} setAmountToSell={setAmountToSell} 
+        amountToSell={amountToSell} symbolSell={symbolSell} onDeleteAsset={onDeleteAsset}/>
         <View style={styles.top}>
           <Text style={styles.label}>Your Assets</Text>
           <TouchableOpacity style={styles.btnAdd} onPress={()=>setVisible(true)}>
@@ -238,7 +236,6 @@ const Assets = ({setLoading}) => {
     </>
   )
 }
-
 export default Assets
 
 const styles = StyleSheet.create({
