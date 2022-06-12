@@ -7,7 +7,6 @@ import ListItemToggleFavoriteAction from '../general/ListItemToggleFavoriteActio
 import { firestore } from '../../firebase/firebase'
 import {useAuth} from '../../firebase/auth';
 import firebase from 'firebase/compat/app';
-
 const Cryptos = ({query, flatListRef, cryptos, navigation, onRefresh, isFetching, results, onEndReached, favos}) => {
   const {user} = useAuth();
   const renderItem = ({item}) => (
