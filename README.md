@@ -8,7 +8,7 @@ https://github.com/soufieddin/f-club/tree/main
 
 ## You can open the app via link or qrcode(recomended).
 
-### Link to the app (open this link on your mobile device).
+### Link to the app (open this link on your mobile device via expo app).
 
 exp://exp.host/@aideso/f-club?release-channel=default
 
