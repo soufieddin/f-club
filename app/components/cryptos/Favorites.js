@@ -15,7 +15,7 @@ const Favorites = ({flatListRef, favosData, navigation, onRefresh, isFetching, f
   const renderItem = ({item}) => (
     <Item 
     symbol={item.symbol}
-    name={item.name}
+    name={item.id}
     price={item.current_price}
     percent={item.price_change_percentage_24h_in_currency}
     logo={item.image}
@@ -24,11 +24,11 @@ const Favorites = ({flatListRef, favosData, navigation, onRefresh, isFetching, f
       navigation.navigate(routes.CRYPTO_DETAIL_SCREEN, item);
     }}
     renderRightActions={()=>(<ListItemToggleFavoriteAction  
-      fav={favos?.includes(item.name.toLowerCase()) ? true : false}
+      fav={favos?.includes(item.id.toLowerCase()) ? true : false}
       onPress={()=> {
         //setFav(!fav)
         let arrayAction;
-        if(!favos.includes(item.name.toLowerCase())){
+        if(!favos.includes(item.id.toLowerCase())){
           arrayAction = firebase.firestore.FieldValue.arrayUnion;
         }
         else{
@@ -37,7 +37,7 @@ const Favorites = ({flatListRef, favosData, navigation, onRefresh, isFetching, f
         const doc =firestore.doc(`users/${user.uid}`);
         doc.update({
           favorite_cryptos:arrayAction(
-            item.name.toLowerCase()
+            item.id.toLowerCase()
           )
         })
       }}
