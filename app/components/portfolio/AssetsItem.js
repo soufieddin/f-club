@@ -85,31 +85,23 @@ const styles = StyleSheet.create({
   logo: {
     height: 32,
     width: 32,
-    // alignSelf: "flex-end"
   },
   price: {
     color: colors.primary,
     fontWeight:"bold",
     fontSize: 14,
-    alignSelf: "center"
-
-
   },
   percent: {
     fontSize: 12,
-    alignSelf: "center"
-
   },
   wrapper: {
     flexDirection: "column",
     alignItems: "center",
     width: "20%"
-
   },
   amount: {
     color: colors.thirdly,
     fontSize: 12,
-    alignSelf: "center"
   },
   wrapperImage: {
     width: "10%"
