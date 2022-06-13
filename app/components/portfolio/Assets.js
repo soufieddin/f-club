@@ -12,6 +12,7 @@ import { getData } from '../../hooks/useFetch';
 import { firestore } from '../../firebase/firebase'
 import { useFirestoreQuery } from '../../firebase/useFirestoreQuery';
 import ListItemSellAction from '../general/ListItemSellAction'
+
 const Assets = ({setLoading}) => {
   //initialValues
   const user = useAuth();
@@ -199,8 +200,7 @@ const Assets = ({setLoading}) => {
 
   const renderItem = ({item}) => (
     <AssetsItem  
-      symbol={item.symbol} 
-      name={item.name} 
+      symbol={item.symbol}  
       logo={item.image} 
       totalPrice={item.totalPrice} 
       boughtPrice={item.boughtPrice}
